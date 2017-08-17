@@ -89,12 +89,15 @@
 						</br></br>
 						<input type="hidden" name="perfil" id='perfil' value="2">	
 						<input type="submit" name="submit" value="Editar" title="Editar"  />
+						<a href="<?php echo base_url(); ?>">Volver</a>
 					</form>	
 					<?php					
 						echo validation_errors();
-					?>
+					?>					
 				</div>
+
 			</div>
+
 		</div>
 	</div>
 	</body>

@@ -8,7 +8,27 @@ class Requisicion_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	//añadimos usuarios
+	public function detalle_requisicion($idreq){
+				
+		$this->db->where("requesicion_id",$idreq);
+		$query = $this->db->get('detalle_requisicion');
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}		
+
+	}
+	public function requisicion_usuario($idusuario){
+			
+		$this->db->select('requisicion.*, detalle_requisicion.folio')->from('requisicion')->join('detalle_requisicion','detalle_requisicion.requesicion_id = requisicion.id','inner')->group_by('requisicion.id')->where("requisicion.autor", $idusuario);
+
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			return $query->result();
+		}
+	}
+
 	public function new_requisicion($id_user)
 	{
 		date_default_timezone_set('America/Mexico_City');

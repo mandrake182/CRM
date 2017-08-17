@@ -13,6 +13,7 @@
  <h1 style="text-align: center">Bienvenido usuario</h1>
  <?=anchor(base_url().'Login/editar/'.$this->session->userdata('id_usuario'), 'Editar perfil')?>
  <?=anchor(base_url().'Login/password/', 'Modificar password')?>
+ <?=anchor(base_url().'Requisicion/', 'Mis requisiciones')?>
  <?=anchor(base_url().'Requisicion/nueva_requisicion/', 'Nueva requisición')?>
  <?=anchor(base_url().'login/logout_ci', 'Cerrar sesión')?>
  </div>
