@@ -57,7 +57,7 @@ class Login_model extends CI_Model {
 	}
 
 	//editamos usuarios
-	public function edit_user($id,$nombre,$apaterno,$amaterno,$telefono,$email)
+	public function edit_user($id,$nombre,$apaterno,$empresa,$telefono,$email)
 	{
 
 		$fecha = date('Y-m-d');
@@ -67,7 +67,7 @@ class Login_model extends CI_Model {
 		$data = array(		
 			'nombre'		=>	$nombre,
 			'apaterno'		=>  $apaterno,
-			'amaterno'		=>  $amaterno,
+			'empresa'		=>  $empresa,
 			'telefono'		=>  $telefono,
 			'email'			=>  $email,
 			'username'		=>  $nombre,			
@@ -99,7 +99,7 @@ class Login_model extends CI_Model {
 	}
 
 	//añadimos usuarios
-	public function new_user($perfil,$nombre,$apaterno,$amaterno,$telefono,$email,$password)
+	public function new_user($perfil,$nombre,$apaterno,$empresa,$telefono,$email,$password)
 	{
 
 		$fecha = date('Y-m-d');
@@ -110,7 +110,7 @@ class Login_model extends CI_Model {
 			'perfil'		=>	$perf[$perfil],
 			'nombre'		=>	$nombre,
 			'apaterno'		=>  $apaterno,
-			'amaterno'		=>  $amaterno,
+			'empresa'		=>  $empresa,
 			'telefono'		=>  $telefono,
 			'email'			=>  $email,
 			'username'		=>  $nombre,

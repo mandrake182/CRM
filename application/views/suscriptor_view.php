@@ -40,7 +40,7 @@
 	<br/>
 	<p>Apellido paterno: <?php echo ($usuario[0]->apaterno !=='') ? $usuario[0]->apaterno: ''; ?></p>
 	<br/>
-	<p>Apellido materno: <?php echo ($usuario[0]->amaterno !=='') ? $usuario[0]->amaterno: ''; ?></p>
+	<p>Empresa: <?php echo ($usuario[0]->empresa !=='') ? $usuario[0]->empresa: ''; ?></p>
 	<br/>
 	<p>Email: <?php echo ($usuario[0]->email !=='') ? $usuario[0]->email: ''; ?></p>
 	<br/>

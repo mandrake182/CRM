@@ -161,7 +161,7 @@ class Login extends CI_Controller
 
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[2]|max_length[100]');            
             $this->form_validation->set_rules('apaterno', 'Apellido Paterno', 'required|trim|min_length[2]|max_length[80]');
-            $this->form_validation->set_rules('amaterno', 'Apellido Materno', 'required|trim|min_length[2]|max_length[80]');
+            $this->form_validation->set_rules('empresa', 'Empresa', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('telefono', 'Teléfono', 'required|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|trim');
             $this->form_validation->set_rules('perfil', 'Perfil', 'required|min_length[1]|max_length[2]|regex_match[/^[1-3]{1}$/]|trim');
@@ -185,13 +185,13 @@ class Login extends CI_Controller
             	$perfil 	= $this->input->post('perfil',TRUE);
             	$nombre 	= $this->input->post('nombre',TRUE);
 	        	$apaterno 	= $this->input->post('apaterno',TRUE);
-	        	$amaterno 	= $this->input->post('amaterno',TRUE);
+	        	$empresa 	= $this->input->post('empresa',TRUE);
 	        	$telefono 	= $this->input->post('telefono',TRUE);
 	        	$email 		= $this->input->post('email',TRUE);	        	
 	        	$password 	= sha1($this->input->post('password',TRUE));	        	
 
-        		if($this->Login_model->new_user($perfil,$nombre,$apaterno,$amaterno,$telefono,$email,$password) == TRUE){
-					$fullname = $nombre.' '.$apaterno.' '.$amaterno;
+        		if($this->Login_model->new_user($perfil,$nombre,$apaterno,$empresa,$telefono,$email,$password) == TRUE){
+					$fullname = $nombre.' '.$apaterno;
 					$Emailtemplate ="<!DOCTYPE html>
 													<html>
 													<head>
@@ -264,7 +264,7 @@ class Login extends CI_Controller
         	                    	
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[2]|max_length[100]');            
             $this->form_validation->set_rules('apaterno', 'Apellido Paterno', 'required|trim|min_length[2]|max_length[80]');
-            $this->form_validation->set_rules('amaterno', 'Apellido Materno', 'required|trim|min_length[2]|max_length[80]');
+            $this->form_validation->set_rules('empresa', 'Empresa', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
             $this->form_validation->set_rules('telefono', 'Teléfono', 'required|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|trim');
             $this->form_validation->set_rules('perfil', 'Perfil', 'required|min_length[1]|max_length[2]|regex_match[/^[1-3]{1}$/]|trim');            
@@ -285,7 +285,7 @@ class Login extends CI_Controller
             	{
             		$nombre 	= $this->input->post('nombre',TRUE);
 		        	$apaterno 	= $this->input->post('apaterno',TRUE);
-		        	$amaterno 	= $this->input->post('amaterno',TRUE);
+		        	$empresa 	= $this->input->post('empresa',TRUE);
 		        	$telefono 	= $this->input->post('telefono',TRUE);
 		        	$email 		= $this->input->post('email',TRUE);
             		$id = $this->input->post('id');
@@ -293,7 +293,7 @@ class Login extends CI_Controller
             		$usuario 			= $this->Login_model->get_user($id);			
 					$data['usuario'] 	= $usuario;
 
-            		if($this->Login_model->edit_user($id,$nombre,$apaterno,$amaterno,$telefono,$email) == 1){            								            			
+            		if($this->Login_model->edit_user($id,$nombre,$apaterno,$empresa,$telefono,$email) == 1){            								            			
             			redirect(base_url().'Login/index/e/1','refresh');
 
             		}else{
