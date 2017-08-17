@@ -1,51 +1,84 @@
-<!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/text.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css" media="screen" />
-		 <style type="text/css">
-		 	h1{
-		 		font-size: 22px;
-		 		text-align: center;
-		 		margin: 20px 0px;
-		 	}
-		 	#login{
-		 		background: #fefefe;
-		 		min-height: 500px;
-		 	}
-		 	#formulario_login{
-		 		font-size: 14px;
-		 		border: 8px solid #112233;		 		
-		 	}
-		 	label{
-		 		display: block;
-		 		font-size: 16px;
-		 		color: #333333;
-		 		font-weight: bold;
-		 	}
-		 	input[type=text],input[type=password]{
-		 		padding: 10px 6px;
-		 		width: 400px;
-		 	}
-		 	input[type=submit]{
-		 		padding: 5px 40px;
-		 		background: #61399d;
-		 		color: #fff;
-		 	}
-		 	#campos_login{
-		 		margin: 50px 0px;
-		 	}
-		 	p{
-		 		color: #f00;
-		 		font-weight: bold;
-		 	}
-		 </style>
-	</head>
+
+<?php
+require('header.php');
+?>
 	<body>	
+		<div class="form-registration">
+
+  <figure class="form-registration-img">
+    <img src="<?php echo base_url();?>img/interna.jpg" alt="" />
+    <figcaption class="form-registration-img-caption bgWhite"><strong>REGISTRO</strong></figcaption>
+  </figure>
+
+  <form class="form-registration-group" action="">
+
+        <!-- ∆ Nombre-->
+       <div class="input-group">
+            <span class="input-group-label">
+               <i class="fi-torso colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="text" placeholder="Nombre*"  required>
+        </div>
+
+       <!-- ∆ Apellidos-->
+        <div class="input-group">
+            <span class="input-group-label">
+               <i class="fi-torso colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="text" placeholder="Apellidos*"  required>
+        </div>
+
+       <!-- ∆ Empresa-->
+        <div class="input-group">
+            <span class="input-group-label">
+               <i class="fi-shopping-bag colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="text" placeholder="Empresa*"  required>
+        </div>
+
+        <!-- ∆ correo electrónico -->
+      <div class="input-group">
+            <span class="input-group-label">
+              <i class="fi-mail colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="text" placeholder="Correo electrónico*"   required>
+      </div>
+
+
+         <!-- ∆ Teléfono -->
+      <div class="input-group">
+            <span class="input-group-label">
+              <i class="fi-telephone colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="tel" placeholder="Teléfono*"   required>
+      </div>
+
+
+
+      <!-- ∆ Pass-->
+      <div class="input-group">
+            <span class="input-group-label">
+              <i class="fi-unlock colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="password"  placeholder="Contraseña*"   required>
+      </div>
+       
+
+        <!-- ∆ Confirmar Pass-->
+      <div class="input-group">
+            <span class="input-group-label">
+              <i class="fi-lock colorGrey"></i>
+            </span>
+            <input class="input-group-field" type="password"  placeholder="Confirmar contraseña*"   required>
+      </div>
+
+
+        <input class="form-registration-submit-button" type="submit" value="registrarme" >
+  </form>
+
+</div>
 	<div class="container_12">
-		<h1>Registro</h1>
+		<h1>Registros</h1>
 		<div class="grid_12" id="login">
 			<div class="grid_8 push_2" id="formulario_login">
 				<div class="grid_6 push_1" id="campos_login">
@@ -97,5 +130,6 @@
 			</div>
 		</div>
 	</div>
-	</body>
-</html>
+<?php
+require('footer.php');
+?>

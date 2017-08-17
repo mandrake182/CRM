@@ -1,0 +1,15 @@
+.warning{
+	background:black;
+	transition: all .4s;
+	p{
+		text-align: center;
+		color: $blueStrong;
+		font-size: .85em;
+		margin: 0;
+		padding: .5em;
+}
+
+	p:last-child{
+		padding-bottom: 1em;
+	}
+}
