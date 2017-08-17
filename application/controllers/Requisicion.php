@@ -15,7 +15,32 @@ class Requisicion extends CI_Controller
 	
 	public function index()
 	{
-			
+		$id_user = $this->session->userdata('id_usuario');
+		if(!empty($id_user) && $id_user!==''){			
+			$registros_usuario = $this->Requisicion_model->requisicion_usuario($id_user);
+			$data['registros_usuario'] = $registros_usuario;
+			$this->load->view('requisicion_usuario_view',$data);
+		}else{
+			redirect(base_url().'Login/');
+		}		
+	}
+
+	public function detalles($idre)
+	{
+		$id_user = $this->session->userdata('id_usuario');
+		if(!empty($id_user) && $id_user!==''){
+			if(!empty($idre) && $idre!==NULL){
+				$idre 		= intval(strip_tags(trim($idre)));
+				$registro_detalles 	= $this->Requisicion_model->detalle_requisicion($idre);				
+				$data['registro_detalles'] = $registro_detalles;
+				$this->load->view('detalles_requisicion_view',$data);	
+			}else{
+				$this->session->set_flashdata('error_requisicion','Identificador inválido.');
+				$this->load->view('requisicion_usuario_view',$data);	
+			}						
+		}else{
+			redirect(base_url().'Login/');
+		}		
 	}
 
 	public function enviar_email($envia,$destino,$html){
@@ -31,11 +56,10 @@ class Requisicion extends CI_Controller
 	    $mail->IsHTML(true);
 	    $mail->Username = "backend@codehaus.mx";
 	    $mail->Password = "89CodeHaus";
-	    $mail->SetFrom(strip_tags('backend@codehaus.mx'),'Dairmex - Nueva requisición');
+	    $mail->SetFrom('backend@codehaus.mx','Dairmex - Nueva requisición');
 	    $mail->Subject = "Dairmex - Nueva requisición";
 
-	    $mail->Body = $html;	 
-	    //$mail->AddAddress("pablo@montesdeocacp.com");  
+	    $mail->Body = $html;	    
 	    $mail->AddAddress($destino);
 	    $mail->AddAddress($envia);  
 	           
@@ -46,8 +70,8 @@ class Requisicion extends CI_Controller
 	     }
 	}
 
-	public function guardar_requisicion()
-	{
+	public function guardar_requisicion(){
+
 		if($this->input->server('REQUEST_METHOD') == 'POST' && count($_POST)>0)
 		{
 			
@@ -128,7 +152,10 @@ class Requisicion extends CI_Controller
 													</body>
 													</html>";
 
-								$enviar_email = $this->enviar_email('backend@codehaus.mx','themstudio@hotmail.com',$Emailtemplate); 
+								$de_email 	= $this->session->userdata('email');
+								$para_email = 'backend@codehaus.mx';		
+
+								$enviar_email = $this->enviar_email($de_email,$para_email,$Emailtemplate); 
 								if($enviar_email==TRUE){
 									$this->session->set_flashdata('requisicion_valida','Operación realizada correctamente.');									
 								}else{

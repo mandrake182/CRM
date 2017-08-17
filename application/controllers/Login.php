@@ -68,7 +68,8 @@ class Login extends CI_Controller
 		                'is_logued_in' 	=> 		TRUE,
 		                'id_usuario' 	=> 		$check_user->id,
 		                'perfil'		=>		$check_user->perfil,
-		                'username' 		=> 		$check_user->username
+		                'username' 		=> 		$check_user->username,
+		                'email' 		=> 		$check_user->email
 	            		);		
 						$this->session->set_userdata($data);
 						$this->index();
@@ -88,9 +89,14 @@ class Login extends CI_Controller
 
     public function password()
     {
-        $data = array('titulo' => 'Modificar password');
+    	$id_user = $this->session->userdata('id_usuario');
+		if(!empty($id_user) && $id_user!==''){
+	        $data = array('titulo' => 'Modificar password');
 
-        $this->load->view('password_view',$data);
+	        $this->load->view('password_view',$data);
+	    }else{
+			redirect(base_url().'Login/');	    	
+	    }
     }
 
     public function update_password(){
@@ -185,22 +191,77 @@ class Login extends CI_Controller
 	        	$password 	= sha1($this->input->post('password',TRUE));	        	
 
         		if($this->Login_model->new_user($perfil,$nombre,$apaterno,$amaterno,$telefono,$email,$password) == TRUE){
-        			$this->session->set_flashdata('registro_correcto','El usuario fué registrado correctamente');
-					redirect(base_url().'Login','refresh');
+					$fullname = $nombre.' '.$apaterno.' '.$amaterno;
+					$Emailtemplate ="<!DOCTYPE html>
+													<html>
+													<head>
+														<title>Accesos CRM Dairmex</title>
+													</head>
+													<body>
+														<br><br>
+														<p><b>Hola: ".$fullname."</b> tus accesos a CRM Dairmex son:</p>
+														<table>
+															<tbody>
+																<tr>
+																	<td>Usuario: </td><td>".$email."</td>
+																	<td>Password: </td><td>".$this->input->post('password',TRUE)."</td>
+																</tr>
+															</tbody>
+														</table>
+													</body>
+													</html>";
+
+								$de_email 	= 'backend@codehaus.mx';
+								$para_email = $email;		
+
+								$enviar_email = $this->enviar_email_password($de_email,$para_email,$Emailtemplate); 
+								if($enviar_email==TRUE){
+									$this->session->set_flashdata('registro_correcto','El usuario fué registrado correctamente, sus accesos han sido enviados al email proporcionado');
+								}else{	
+									$this->session->set_flashdata('registro_correcto','El usuario fué registrado correctamente, no se pudo enviar el email con sus accesos');
+								}        			        			
+								redirect(base_url().'Login','refresh');
         		}            		        	
 
             }
  
         }
-        
     }
+
+    public function enviar_email_password($envia,$destino,$html){
+
+		require_once(APPPATH.'libraries/PHPMailer/class.phpmailer.php');	
+	  	$mail = new PHPMailer(); // create a new object	  	
+	    $mail->CharSet="UTF-8";
+	    $mail->SMTPDebug = 2; // debugging: 1 = errors and messages, 2 = messages only
+	    $mail->SMTPAuth = true; // authentication enabled
+	    $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+	    $mail->Host = "mail.codehaus.mx";
+	    $mail->Port = 465; // or 587
+	    $mail->IsHTML(true);
+	    $mail->Username = "backend@codehaus.mx";
+	    $mail->Password = "89CodeHaus";
+	    $mail->SetFrom('backend@codehaus.mx','Dairmex - CRM');
+	    $mail->Subject = "Dairmex - Accesos CRM";
+
+	    $mail->Body = $html;	    
+	    $mail->AddAddress($destino);
+	    $mail->AddAddress($envia);  
+	           
+	     if(!$mail->Send()) {
+	        return FALSE;
+	     } else {        
+	        return TRUE;
+	     }
+	}
+        
+    
 
     public function update_user(){
 
     	if($this->input->server('REQUEST_METHOD') == 'POST' && count($_POST)>0)
         {            
         	                    	
-
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[2]|max_length[100]');            
             $this->form_validation->set_rules('apaterno', 'Apellido Paterno', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('amaterno', 'Apellido Materno', 'required|trim|min_length[2]|max_length[80]');
@@ -250,18 +311,22 @@ class Login extends CI_Controller
     }
 
     public function editar($id_usuario){
-    	
-    	if(!empty($id_usuario)){
+    	$id_user = $this->session->userdata('id_usuario');
+		if(!empty($id_user) && $id_user!==''){
+	    	if(!empty($id_usuario) && $id_user == $id_usuario){
 
-			$usuario 			= $this->Login_model->get_user($id_usuario);			
-			$data['usuario'] 	= $usuario;
-			$data['titulo'] 	= 'Editar perfil';
-			$this->load->view('editar_view',$data);
+				$usuario 			= $this->Login_model->get_user($id_usuario);			
+				$data['usuario'] 	= $usuario;
+				$data['titulo'] 	= 'Editar perfil';
+				$this->load->view('editar_view',$data);
 
-    	}else{
-    		$this->session->set_flashdata('id_invalido','El id del es inválido.');
-			$this->index();
-    	}
+	    	}else{
+	    		$this->session->set_flashdata('id_invalido','El id del es inválido.');
+				$this->index();
+	    	}
+	    }else{
+	    	redirect(base_url().'Login/');
+	    }
     }
 	
 	public function token()
