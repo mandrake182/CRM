@@ -1,0 +1,4 @@
+[16-Aug-2017 18:44:46 UTC] PHP Warning:  define() expects at least 2 parameters, 1 given in /home/codehaus/public_html/clientes/index.php on line 57
+[16-Aug-2017 18:44:46 UTC] PHP Notice:  Use of undefined constant ENVIRONMENT - assumed 'ENVIRONMENT' in /home/codehaus/public_html/clientes/index.php on line 67
+[16-Aug-2017 18:44:51 UTC] PHP Warning:  define() expects at least 2 parameters, 1 given in /home/codehaus/public_html/clientes/index.php on line 57
+[16-Aug-2017 18:44:51 UTC] PHP Notice:  Use of undefined constant ENVIRONMENT - assumed 'ENVIRONMENT' in /home/codehaus/public_html/clientes/index.php on line 67
