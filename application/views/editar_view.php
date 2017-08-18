@@ -1,49 +1,180 @@
-<!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/text.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css" media="screen" />
-		 <style type="text/css">
-		 	h1{
-		 		font-size: 22px;
-		 		text-align: center;
-		 		margin: 20px 0px;
-		 	}
-		 	#login{
-		 		background: #fefefe;
-		 		min-height: 500px;
-		 	}
-		 	#formulario_login{
-		 		font-size: 14px;
-		 		border: 8px solid #112233;		 		
-		 	}
-		 	label{
-		 		display: block;
-		 		font-size: 16px;
-		 		color: #333333;
-		 		font-weight: bold;
-		 	}
-		 	input[type=text],input[type=password]{
-		 		padding: 10px 6px;
-		 		width: 400px;
-		 	}
-		 	input[type=submit]{
-		 		padding: 5px 40px;
-		 		background: #61399d;
-		 		color: #fff;
-		 	}
-		 	#campos_login{
-		 		margin: 50px 0px;
-		 	}
-		 	p{
-		 		color: #f00;
-		 		font-weight: bold;
-		 	}
-		 </style>
-	</head>
-	<body>	
+<?php
+require('header.php');
+?>
+<body>
+
+	<!-- user -->	
+	  <div class="user">
+	  	<div class="content">
+	  		<p class="regular colorWhite">Gersain López</p>
+	  		<span >|</span>
+	  		<a href="" class="regular">Cerra Sesión</a>
+	  	</div>
+	  </div>
+	  <!-- user -->
+
+         <!--  contenido -->
+	<div class="app-dashboard shrink-medium">
+
+		<!--  header-->
+		  <div class="row app-dashboard-top-nav-bar">
+		   <div class="content">
+			    <div class="">
+			      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+			      <a class="app-dashboard-logo">
+			      	<img src="<?php echo base_url();?>img/logo.png" alt="">
+			      </a>
+			    </div>
+		      </div>
+		  </div>
+		  <!--  header-->
+
+		 <!--  body-->
+		<div class="app-dashboard-body off-canvas-wrapper">
+
+			<!-- nav  mobile-->
+			<div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+				
+				<div class="app-dashboard-sidebar-title-area">
+					<!-- nav  in-->
+					<div class="app-dashboard-close-sidebar">
+						<!-- Close button -->
+						<button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+						<span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+						</button>
+					</div>
+					
+					<!-- nav  in-->
+					<div class="app-dashboard-open-sidebar">
+						<!-- side button -->
+						<button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+						<span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+						</button>
+					</div>
+				</div>
+
+				<!-- nav  main-->
+				<div class="app-dashboard-sidebar-inner bgGrey">
+					<ul class="menu vertical">
+
+						<!-- home -->
+						<li>
+						    <a href="#" class="">
+							<i class="fi-home colorBlueDark"></i><span class="app-dashboard-sidebar-text">Inicio</span>
+					                </a>
+						</li>
+
+						<!-- perfil -->
+						<li>
+						    <a href="#" class="is-active">
+							<i class="fi-page-edit colorBlueDark"></i><span class="app-dashboard-sidebar-text">Editar perfil</span>
+						    </a>
+						</li>
+
+						<!-- pass -->
+						<li>
+						     <a>
+							<i class="fi-unlock colorBlueDark"></i><span class="app-dashboard-sidebar-text">Modificar password</span>
+						      </a>
+						</li>
+
+
+						<!-- requi -->
+						<li>
+						    <a>
+						 	<i class="fi-page colorBlueDark"></i><span class="app-dashboard-sidebar-text">Mis requisiciones</span>
+						   </a>
+						</li>
+
+						<!-- new requi -->
+						<li>
+						     <a>
+							<i class="fi-page-add colorBlueDark"></i><span class="app-dashboard-sidebar-text">Nueva requisición</span>
+						     </a>
+						</li>
+
+						<!-- close -->
+						<li>
+						   <a>
+							<i class="fi-arrow-left colorBlueDark"></i><span class="app-dashboard-sidebar-text">Cerrar sesión</span>
+						   </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- nav  main-->
+			</div>
+			<!-- nav -->
+
+
+			<!-- content-->
+			<div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+
+				<h3 class="font2 colorFont light">Edición de perfil</h3>
+
+				<form class="form-registration-group regitro" action="">
+
+					<!-- ∆ Nombre-->
+					<div class="input-group">
+						<span class="input-group-label  bgBlack"  >
+							<i class=" icon fi-torso colorBlueDark"></i>
+						</span>
+						<input class="input-group-field" type="text"   name="nombre" id="nombre" value="" placeholder="Nombre*"  />
+					</div>
+					<!-- ∆ Nombre-->
+
+					<!-- ∆ Apellidos-->
+					<div class="input-group">
+						<span class="input-group-label  bgBlack"  >
+							<i class="fi-torso colorBlueDark"></i>
+						</span>
+						<input class="input-group-field" type="text" name="apaterno" id="apaterno" value="<?php echo set_value('apaterno'); ?>" placeholder="Apellido paterno*"  />
+					</div>
+
+
+					<!-- ∆ Empresa-->
+					<div class="input-group">
+						<span class="input-group-label  bgBlack"  >
+							<i class="fi-shopping-bag colorBlueDark"></i>
+						</span>
+						<input class="input-group-field" type="text"  name="empresa" id="empresa" value="<?php echo set_value('empresa'); ?>" placeholder="Empresa*"  />
+					</div>
+
+
+					<!-- ∆ correo electrónico -->
+					<div class="input-group">
+						<span class="input-group-label  bgBlack"  >
+							<i class="icon fi-mail colorBlueDark"></i>
+						</span>
+						<input class="input-group-field" type="email" name="email" id="email" value="<?php echo set_value('email'); ?>" placeholder="Email*"  />
+						<!--   error -->
+					</div>
+
+					<!-- ∆ Teléfono -->
+					<div class="input-group">
+						<span class="input-group-label  bgBlack"  >
+							<i class="icon fi-telephone colorBlueDark"></i>
+						</span>
+						<input class="input-group-field" type="tel" name="telefono" id="telefono" value="<?php echo set_value('telefono'); ?>" placeholder="Teléfono*"  />
+						<!-- error -->
+					</div>
+
+					<input type="hidden" name="perfil" id='perfil' value="2">	
+					<input class="form-registration-submit-button" type="submit" name="submit" value="Confirmar" title="Registrarme"  />
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
 	<div class="container_12">
 		<h1>Editar perfil</h1>
 		<div class="grid_12" id="login">
@@ -100,5 +231,11 @@
 
 		</div>
 	</div>
-	</body>
-</html>
+
+
+
+
+
+<?php
+require('footer.php');
+?>

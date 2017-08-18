@@ -38,7 +38,7 @@ require('header.php');
 	            <span class="input-group-label bgBlack">
 	              <i class="fi-mail colorBlueDark"></i>
 	            </span>
-	            <input class="input-group-field"  value="<?php echo set_value('email'); ?>"  type="text" placeholder="Correo electrónico">
+	            <input class="input-group-field"  type="text" name="email"  value="<?php echo set_value('email'); ?>"   placeholder="Correo electrónico">
 	      </div>
 
 	      <!-- ∆ Pass-->
@@ -46,10 +46,10 @@ require('header.php');
 	            <span class="input-group-label bgBlack">
 	               <i class="fi-unlock colorBlueDark"></i>
 	            </span>
-	            <input class="input-group-field"  value="<?php echo set_value('password'); ?>" type="password"  placeholder="Contraseña">
+	            <input class="input-group-field" type="password"  name="password" value="<?php echo set_value('password'); ?>"   placeholder="Contraseña">
 	      </div>
                     <?php echo form_hidden('token',$token) ?>
-	    <input class="form-registration-submit-button" type="submit" name="submit" value="Iniciar sesión" title="Iniciar sesión"  />
+	     <input class="form-registration-submit-button" type="submit" name="submit" value="Iniciar sesión" title="Iniciar sesión"  />
 	    <p class="form-registration-member-signin"><a class="light" href="<?php echo base_url().'Login/registro'; ?>">Registrarse</a></p>
 	  </form>
 	  <!-- ∆ Form -->

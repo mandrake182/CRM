@@ -100,13 +100,8 @@ require('header.php');
 
 			
 
-			</div>
-			<script>
+	  </div>
 
-if ($(".input-group-field").length > 0){ 
-  	 $( "i.icon" ).addClass( "colorBlue" );
-}
-</script>
 
 <?php
 require('footer.php');
