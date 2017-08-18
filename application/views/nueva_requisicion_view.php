@@ -1,56 +1,118 @@
-<!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/text.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css" media="screen" />
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>		 
-		 <script type="text/javascript" src="<?php echo base_url();?>js/requesicion.js"></script>		 
-		 <style type="text/css">
-		 	h1{
-		 		font-size: 22px;
-		 		text-align: center;
-		 		margin: 20px 0px;
-		 	}
-		 	#login{
-		 		background: #fefefe;
-		 		min-height: 500px;
-		 	}
-		 	#formulario_login{
-		 		font-size: 14px;
-		 		border: 8px solid #112233;		 		
-		 	}
-		 	label{
-		 		display: block;
-		 		font-size: 16px;
-		 		color: #333333;
-		 		font-weight: bold;
-		 	}
-		 	input[type=text],input[type=password]{
-		 		padding: 10px 6px;
-		 		width: 200px;
-		 	}
-		 	input[type=submit]{
-		 		padding: 5px 40px;
-		 		background: #61399d;
-		 		color: #fff;
-		 	}
-		 	#add{
-		 		padding: 5px 40px;
-		 		background: #61399d;
-		 		color: #fff;	
-		 	}
-		 	#campos_login{
-		 		margin: 50px 0px;
-		 	}
-		 	p{
-		 		color: #f00;
-		 		font-weight: bold;
-		 	}
-		 </style>
-	</head>
+<?php
+require('header.php');
+?>
 	<body>	
+
+<div class="app-dashboard shrink-medium">
+			  <div class="row app-dashboard-top-nav-bar">
+			   <div class="content">
+				    <div class="">
+				      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+				      <a class="app-dashboard-logo">
+				      	<img src="<?php echo base_url();?>img/logo.png" alt="">
+				      </a>
+				    </div>
+			      </div>
+			  </div>
+
+
+			  <div class="app-dashboard-body off-canvas-wrapper">
+			    <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+			      <div class="app-dashboard-sidebar-title-area">
+			        <div class="app-dashboard-close-sidebar">
+			          <!-- Close button -->
+			          <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+			          </button>
+			        </div>
+			        <div class="app-dashboard-open-sidebar">
+			          <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+			          </button>
+			        </div>
+			      </div>
+			     <?php require('sidebar_menu.php'); ?>      
+			    </div>
+
+			<!-- content-->
+			<div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+
+				<h3 class="font2 colorFont light">Listado de Requisiciones</h3>
+
+						<?php 
+							if($this->session->flashdata('requisicion_valida'))
+							{
+						?>
+							<p><?=$this->session->flashdata('requisicion_valida')?></p>
+						<?php
+							}
+							if($this->session->flashdata('requisicion_invalida'))
+							{
+						?>
+							<p><?=$this->session->flashdata('requisicion_invalida')?></p>
+						<?php
+							}
+						?>
+						
+						<div class="col-6">						
+							Folio : <?php echo $folio;?>
+							Fecha : <?php echo date('Y-m-d');?>
+						</div>
+						<form name="fr-req" id="fr-req" action="<?php echo base_url().'Requisicion/guardar_requisicion'; ?>" method="post" accept-charset="utf-8">
+
+							<div class="table-responsive">
+							  <table class="table" id='tabla_req'>
+							    <thead>
+							      <tr>
+							        <th>No</th>
+							        <th>Artículo</th>
+							        <th>Medida</th>
+							        <th>Cantidad</th>
+							        <th>Proyecto</th>
+							        <th>Comentarios</th>						        						        
+							      </tr>
+							    </thead>
+							    <tbody>
+							    	
+							    			<tr id="tr-1" class='tr-number'>
+							    				<td>
+							    					1						    						
+							    				</td>
+							    				<td>
+							    					<input type="text" name="articulo-<?php echo $i; ?>" class='art' placeholder='Artículo*'>
+							    				</td>
+							    				<td>
+							    					<input type="text" name="medida-<?php echo $i; ?>" class='art' placeholder='Medida*'>
+							    				</td>
+							    				<td>
+							    					<input type="text" name="cantidad-<?php echo $i; ?>" class='art' placeholder='Cantidad*'>
+							    				</td>
+							    				<td>
+							    					<input type="text" name="proyecto-<?php echo $i; ?>" class='art' placeholder='Proyecto*'>
+							    				</td>
+							    				<td>
+							    					<textarea name="comentarios-<?php echo $i; ?>" placeholder='Comentarios'></textarea>
+							    				</td>
+							    			</tr>
+					    			
+							   
+							    </tbody>
+							  </table>		
+							  </div>
+							  <input type="hidden" name="limit" value="1" id='limit'>			
+							<input type="submit" name="submit" value="Enviar" title="Enviar"  />
+							<button type="button" id="add">Agregar fila</button>
+						</form>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
 	<div class="container">
 		<h1>Registro</h1>
 		<br/>		
@@ -122,7 +184,8 @@
 						<input type="submit" name="submit" value="Enviar" title="Enviar"  />
 						<button type="button" id="add">Agregar fila</button>
 					</form>	
-					<a href="<?php echo base_url(); ?>">Home</a>			
+		
 		</div>
-	</body>
-</html>
+	<?php
+require('footer.php');
+?>

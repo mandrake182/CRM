@@ -1,99 +1,94 @@
-<!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/960.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/text.css" media="screen" />
-		 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css" media="screen" />
-		 <style type="text/css">
-		 	h1{
-		 		font-size: 22px;
-		 		text-align: center;
-		 		margin: 20px 0px;
-		 	}
-		 	#login{
-		 		background: #fefefe;
-		 		min-height: 500px;
-		 	}
-		 	#formulario_login{
-		 		font-size: 14px;
-		 		border: 8px solid #112233;		 		
-		 	}
-		 	label{
-		 		display: block;
-		 		font-size: 16px;
-		 		color: #333333;
-		 		font-weight: bold;
-		 	}
-		 	input[type=text],input[type=password]{
-		 		padding: 10px 6px;
-		 		width: 400px;
-		 	}
-		 	input[type=submit]{
-		 		padding: 5px 40px;
-		 		background: #61399d;
-		 		color: #fff;
-		 	}
-		 	#campos_login{
-		 		margin: 50px 0px;
-		 	}
-		 	p{
-		 		color: #f00;
-		 		font-weight: bold;
-		 	}
-		 </style>
-	</head>
+<?php
+require('header.php');
+?>
 	<body>
-	<div class="container_12">
-		<h1>Listado requisiciones</h1>
-		<div class="grid_12" id="login">
-			<?php 
-				if($this->session->flashdata('error_requisicion'))
-				{
-			?>
-					<p><?=$this->session->flashdata('error_requisicion')?></p>
-			<?php
-				}
-			?>
-			<div class="grid_8 push_2" id="formulario_login">
-			<?php if(count($registros_usuario)>0){ ?>
-				<table border="1">
-					<thead>
-				      <tr>
-				        <th>No</th>
-				        <th>Folio</th>
-				        <th>Fecha realización</th>
-				        <th>Detalle</th>	        
-				      </tr>
-				    </thead>
-				    <tbody>
-				    <?php 
-				    	$x = 1;
-				    	foreach ($registros_usuario as $r) {
-					?>
-							<tr>
-								<td><?php echo $x; ?></td>
-								<td><?php echo $r->folio; ?></td>
-								<td><?php echo $r->fecha; ?></td>
-								<td><a href="<?php echo base_url().'Requisicion/detalles/'.$r->id; ?>">Ver detalle</a></td>
-							</tr>
-					<?php
-							$x++;				    		
-				    	}
-				    ?>
-				    </tbody>
-			    </table>
-			    <?php
-					}else{
-			    ?>
-			    		<p>No existen registros en sistema.</p>
-			    <?php	
-			    	}
-			    ?>	
-			    <a href="<?php echo base_url(); ?>">Home</a>
-			 </div>
+		<div class="app-dashboard shrink-medium">
+			  <div class="row app-dashboard-top-nav-bar">
+			   <div class="content">
+				    <div class="">
+				      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+				      <a class="app-dashboard-logo">
+				      	<img src="<?php echo base_url();?>img/logo.png" alt="">
+				      </a>
+				    </div>
+			      </div>
+			  </div>
+
+
+			  <div class="app-dashboard-body off-canvas-wrapper">
+			    <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+			      <div class="app-dashboard-sidebar-title-area">
+			        <div class="app-dashboard-close-sidebar">
+			          <!-- Close button -->
+			          <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+			          </button>
+			        </div>
+			        <div class="app-dashboard-open-sidebar">
+			          <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+			          </button>
+			        </div>
+			      </div>
+			     <?php require('sidebar_menu.php'); ?>      
+			    </div>
+
+			<!-- content-->
+			<div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+
+				<h3 class="font2 colorFont light">Listado de Requisiciones</h3>
+
+						<div id="login">
+							<?php 
+								if($this->session->flashdata('error_requisicion'))
+								{
+							?>
+									<p><?=$this->session->flashdata('error_requisicion')?></p>
+							<?php
+								}
+							?>
+						<div  id="table">
+							<?php if(count($registros_usuario)>0){ ?>
+								<table border="1">
+								  <thead>
+								      <tr>
+								        <th>No</th>
+								        <th>Folio</th>
+								        <th>Fecha realización</th>
+								        <th>Detalle</th>	        
+								      </tr>
+								    </thead>
+								    <tbody>
+								    <?php 
+								    	$x = 1;
+								    	foreach ($registros_usuario as $r) {
+									?>
+											<tr>
+												<td><?php echo $x; ?></td>
+												<td><?php echo $r->folio; ?></td>
+												<td><?php echo $r->fecha; ?></td>
+												<td><i class=" icon fi-plus colorBlueDark"></i><a href="<?php echo base_url().'Requisicion/detalles/'.$r->id; ?>">Ver detalle</a></td>
+											</tr>
+									<?php
+											$x++;				    		
+								    	}
+								    ?>
+								    </tbody>
+							    </table>
+							    <?php
+									}else{
+							    ?>
+							    		<p>No existen registros en sistema.</p>
+							    <?php	
+							    	}
+							    ?>	
+							 </div>
+						</div>
+
 			</div>
-		</div>		
+		</div>
 	</div>
-	</body>
-</html>
+	
+<?php
+require('footer.php');
+?>

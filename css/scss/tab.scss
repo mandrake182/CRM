@@ -1,0 +1,57 @@
+#table{
+	margin-top: 1em;
+	table{
+		thead{
+			tr{
+				th{
+					font-size: .8em;
+				}
+			}
+		}
+		tbody{
+			tr{
+				td{
+					font-size: .8em;
+					i{
+						margin-right: .5em;
+					}
+					a{
+						color: $font;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+ 
+ .table-responsive{
+ 	table{
+		thead{
+			tr{
+				th{
+					font-size: .8em;
+				}
+			}
+		}
+		tbody{
+			tr{
+				td{
+					font-size: .8em;
+					i{
+						margin-right: .5em;
+					}
+					a{
+						color: $font;
+						text-decoration: underline;
+					}
+					input{
+						margin:0;
+						height: 1.7em;
+											}
+				}
+			}
+		}
+	}
+
+ }

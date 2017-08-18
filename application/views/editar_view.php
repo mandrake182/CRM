@@ -1,17 +1,17 @@
 <?php
 require('header.php');
 ?>
-<div class="app-dashboard shrink-medium">
-  <div class="row app-dashboard-top-nav-bar">
-   <div class="content">
-	    <div class="">
-	      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-	      <a class="app-dashboard-logo">
-	      	<img src="<?php echo base_url();?>img/logo.png" alt="">
-	      </a>
-	    </div>
-      </div>
-  </div>
+	<div class="app-dashboard shrink-medium">
+			  <div class="row app-dashboard-top-nav-bar">
+			   <div class="content">
+				    <div class="">
+				      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+				      <a class="app-dashboard-logo">
+				      	<img src="<?php echo base_url();?>img/logo.png" alt="">
+				      </a>
+				    </div>
+			      </div>
+			  </div>
 
 
 			  <div class="app-dashboard-body off-canvas-wrapper">
@@ -31,7 +31,7 @@ require('header.php');
 			      </div>
 			     <?php require('sidebar_menu.php'); ?>      
 			    </div>
-			    
+
 			<!-- content-->
 			<div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
 

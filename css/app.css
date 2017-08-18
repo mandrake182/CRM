@@ -633,4 +633,29 @@ body {
   cursor: not-allowed;
   background-color: #fefefe; }
 
+#table {
+  margin-top: 1em; }
+  #table table thead tr th {
+    font-size: .8em; }
+  #table table tbody tr td {
+    font-size: .8em; }
+    #table table tbody tr td i {
+      margin-right: .5em; }
+    #table table tbody tr td a {
+      color: #4c4c4c;
+      text-decoration: underline; }
+
+.table-responsive table thead tr th {
+  font-size: .8em; }
+.table-responsive table tbody tr td {
+  font-size: .8em; }
+  .table-responsive table tbody tr td i {
+    margin-right: .5em; }
+  .table-responsive table tbody tr td a {
+    color: #4c4c4c;
+    text-decoration: underline; }
+  .table-responsive table tbody tr td input {
+    margin: 0;
+    height: 1.7em; }
+
 /*# sourceMappingURL=app.css.map */

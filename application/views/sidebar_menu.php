@@ -18,12 +18,12 @@
      </li>
 
     <li>
-    	  <a href="<?php echo base_url().'Requision'; ?>"> 
+    	  <a href="<?php echo base_url().'Requisicion'; ?>"> 
       	<i class="fi-page colorBlueDark"></i><span class="app-dashboard-sidebar-text">Mis requisiciones</span>
         </a>
     </li>
      <li>
-    	   <a href="<?php echo base_url().'Requision/nueva_requisicion'; ?>">
+    	   <a href="<?php echo base_url().'Requisicion/nueva_requisicion'; ?>">
       	<i class="fi-page-add colorBlueDark"></i><span class="app-dashboard-sidebar-text">Nueva requisición</span>
         </a>
     </li>
