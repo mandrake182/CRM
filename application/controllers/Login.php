@@ -16,6 +16,7 @@ class Login extends CI_Controller
 	{	
 		$usuario 			= $this->Login_model->get_user($this->session->userdata('id_usuario'));			
 		$data['usuario'] 	= $usuario;
+		$data['inicio'] 	= 1;
 		switch ($this->session->userdata('perfil')) {	
 			case '':
 				$data['token'] = $this->token();
