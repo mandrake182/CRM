@@ -19,7 +19,7 @@ class Requisicion_model extends CI_Model {
 
 	}
 	public function requisicion_usuario($idusuario){
-			
+		$this->db->order_by("requisicion.id","desc");	
 		$this->db->select('requisicion.*, detalle_requisicion.folio')->from('requisicion')->join('detalle_requisicion','detalle_requisicion.requesicion_id = requisicion.id','inner')->group_by('requisicion.id')->where("requisicion.autor", $idusuario);
 
 		$query = $this->db->get();
