@@ -127,7 +127,7 @@ body {
 .form-registration {
   background: #fefefe;
   max-width: 480px;
-  margin: 8% auto;
+  margin: 1% auto;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
@@ -267,7 +267,27 @@ body {
     font-size: .85em;
     margin: 0;
     padding: .5em; }
+    .warning p:before {
+      color: #ee971b;
+      content: "\f101";
+      font-family: "foundation-icons";
+      margin-right: .5em; }
   .warning p:last-child {
     padding-bottom: 1em; }
+
+.regitro > p {
+  display: block;
+  font-size: .85em;
+  padding: .3em;
+  margin: -1.3em 0  1.5em;
+  text-align: center;
+  color: #00c3f2;
+  background: black;
+  transition: all .4s; }
+  .regitro > p:before {
+    color: #ee971b;
+    content: "\f101";
+    font-family: "foundation-icons";
+    margin-right: .5em; }
 
 /*# sourceMappingURL=app.css.map */
