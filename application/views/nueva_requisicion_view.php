@@ -54,7 +54,7 @@ require('header.php');
 							}
 						?>
 						
-						<div class="col-6">						
+						<div class="fol">						
 							Folio : <?php echo $folio;?>
 							Fecha : <?php echo date('Y-m-d');?>
 						</div>
@@ -79,19 +79,19 @@ require('header.php');
 							    					1						    						
 							    				</td>
 							    				<td>
-							    					<input type="text" name="articulo-<?php echo $i; ?>" class='art' placeholder='Artículo*'>
+							    					<input type="text" name="articulo-1" class='art' placeholder='Artículo*'>
 							    				</td>
 							    				<td>
-							    					<input type="text" name="medida-<?php echo $i; ?>" class='art' placeholder='Medida*'>
+							    					<input type="text" name="medida-1" class='art' placeholder='Medida*'>
 							    				</td>
 							    				<td>
-							    					<input type="text" name="cantidad-<?php echo $i; ?>" class='art' placeholder='Cantidad*'>
+							    					<input type="text" name="cantidad-1" class='art' placeholder='Cantidad*'>
 							    				</td>
 							    				<td>
-							    					<input type="text" name="proyecto-<?php echo $i; ?>" class='art' placeholder='Proyecto*'>
+							    					<input type="text" name="proyecto-1" class='art' placeholder='Proyecto*'>
 							    				</td>
 							    				<td>
-							    					<textarea name="comentarios-<?php echo $i; ?>" placeholder='Comentarios'></textarea>
+							    					<textarea name="comentarios-1" placeholder='Comentarios'></textarea>
 							    				</td>
 							    			</tr>
 					    			
@@ -99,93 +99,17 @@ require('header.php');
 							    </tbody>
 							  </table>		
 							  </div>
-							  <input type="hidden" name="limit" value="1" id='limit'>			
-							<input type="submit" name="submit" value="Enviar" title="Enviar"  />
-							<button type="button" id="add">Agregar fila</button>
+							  <div class="add2">
+								 <input type="hidden" name="limit" value="1" id='limit'>			
+								<button type="button" id="add" >Agregar fila</button>
+								<input type="submit" name="submit" value="Enviar" title="Enviar"  />
+							</div>	
 						</form>
 
 			</div>
 		</div>
 	</div>
 
-
-
-
-
-
-	<div class="container">
-		<h1>Registro</h1>
-		<br/>		
-					<?php 
-						if($this->session->flashdata('requisicion_valida'))
-						{
-					?>
-						<p><?=$this->session->flashdata('requisicion_valida')?></p>
-					<?php
-						}
-						if($this->session->flashdata('requisicion_invalida'))
-						{
-					?>
-						<p><?=$this->session->flashdata('requisicion_invalida')?></p>
-					<?php
-						}
-					?>
-					
-					<div class="col-6">						
-						Folio : <?php echo $folio;?>
-						Fecha : <?php echo date('Y-m-d');?>
-					</div>
-					<form name="fr-req" id="fr-req" action="<?php echo base_url().'Requisicion/guardar_requisicion'; ?>" method="post" accept-charset="utf-8">
-
-						<div class="table-responsive">
-						  <table class="table" id='tabla_req'>
-						    <thead>
-						      <tr>
-						        <th>No</th>
-						        <th>Artículo</th>
-						        <th>Medida</th>
-						        <th>Cantidad</th>
-						        <th>Proyecto</th>
-						        <th>Comentarios</th>						        						        
-						      </tr>
-						    </thead>
-						    <tbody>
-						    	<?php 
-						    		for ($i=1;$i<=6;$i++){
-						    	?>		
-						    			<tr id="tr-<?php echo $i; ?>" class='tr-number'>
-						    				<td>
-						    					<?php echo $i; ?>						    						
-						    				</td>
-						    				<td>
-						    					<input type="text" name="articulo-<?php echo $i; ?>" class='art' placeholder='Artículo*'>
-						    				</td>
-						    				<td>
-						    					<input type="text" name="medida-<?php echo $i; ?>" class='art' placeholder='Medida*'>
-						    				</td>
-						    				<td>
-						    					<input type="text" name="cantidad-<?php echo $i; ?>" class='art' placeholder='Cantidad*'>
-						    				</td>
-						    				<td>
-						    					<input type="text" name="proyecto-<?php echo $i; ?>" class='art' placeholder='Proyecto*'>
-						    				</td>
-						    				<td>
-						    					<textarea name="comentarios-<?php echo $i; ?>" placeholder='Comentarios'></textarea>
-						    				</td>
-						    			</tr>
-				    			<?php						    		
-				    				}
-						    	?>
-						    	
-						    </tbody>
-						  </table>		
-						  </div>
-						  <input type="hidden" name="limit" value="<?php echo $i; ?>" id='limit'>			
-						<input type="submit" name="submit" value="Enviar" title="Enviar"  />
-						<button type="button" id="add">Agregar fila</button>
-					</form>	
-		
-		</div>
 	<?php
 require('footer.php');
 ?>
