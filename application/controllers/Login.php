@@ -68,7 +68,7 @@ class Login extends CI_Controller
 		                'is_logued_in' 	=> 		TRUE,
 		                'id_usuario' 	=> 		$check_user->id,
 		                'perfil'		=>		$check_user->perfil,
-		                'username' 		=> 		$check_user->username,
+		                'username' 		=> 		$check_user->nombre.' '.$check_user->apaterno,
 		                'email' 		=> 		$check_user->email
 	            		);		
 						$this->session->set_userdata($data);
@@ -106,7 +106,8 @@ class Login extends CI_Controller
 
         	$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|max_length[150]');
 	        $this->form_validation->set_rules('cpassword', 'Confirmar password', 'required|matches[password]|trim|min_length[8]|max_length[150]');
-	        $this->form_validation->set_message('required','El %s es obligatorio');                
+	        $this->form_validation->set_message('required','El %s es obligatorio');
+	        $this->form_validation->set_message('matches','El %s no es igual');                
 	        $this->form_validation->set_message('max_length', 'El %s no puede tener más de %s carácteres');
 	        $this->form_validation->set_message('min_length', 'El %s no puede tener menos de %s carácteres');        
 
@@ -119,7 +120,7 @@ class Login extends CI_Controller
             	$id 		= $this->session->userdata('id_usuario');
             	$password 	= sha1($this->input->post('password',TRUE));
             	if($this->Login_model->password_user($id,$password) == TRUE){
-        			$this->session->set_flashdata('password_incorrecto','Password actualizado correctamente');
+        			$this->session->set_flashdata('password_correcto','Password actualizado correctamente');
 					$this->load->view('password_view');
         		}else{
         			$this->session->set_flashdata('password_incorrecto','Password no actualizado');
@@ -160,7 +161,7 @@ class Login extends CI_Controller
         	                    	
 
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[2]|max_length[100]');            
-            $this->form_validation->set_rules('apaterno', 'Apellido Paterno', 'required|trim|min_length[2]|max_length[80]');
+            $this->form_validation->set_rules('apaterno', 'Apellidos', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('empresa', 'Empresa', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('telefono', 'Teléfono', 'required|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|trim');
@@ -168,12 +169,13 @@ class Login extends CI_Controller
             $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|max_length[150]');
             $this->form_validation->set_rules('cpassword', 'Confirmar password', 'required|matches[password]|trim|min_length[8]|max_length[150]');
             
-            $this->form_validation->set_message('required','El %s es obligatorio');
-            $this->form_validation->set_message('is_unique','El %s ya está registrado');
-            $this->form_validation->set_message('valid_email','El %s no es válido');
-            $this->form_validation->set_message('max_length', 'El %s no puede tener más de %s carácteres');
-            $this->form_validation->set_message('min_length', 'El %s no puede tener menos de %s carácteres');
-            $this->form_validation->set_message('regex_match','El %s es inválido');
+            $this->form_validation->set_message('required','%s es obligatorio');
+            $this->form_validation->set_message('is_unique','%s ya está registrado');
+            $this->form_validation->set_message('valid_email','%s no es válido');
+            $this->form_validation->set_message('matches','El %s no es igual');
+            $this->form_validation->set_message('max_length', '%s no puede tener más de %s carácteres');
+            $this->form_validation->set_message('min_length', '%s no puede tener menos de %s carácteres');
+            $this->form_validation->set_message('regex_match','%s es inválido');
 			
             if($this->form_validation->run() == FALSE)
             {
@@ -263,21 +265,23 @@ class Login extends CI_Controller
         {            
         	                    	
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[2]|max_length[100]');            
-            $this->form_validation->set_rules('apaterno', 'Apellido Paterno', 'required|trim|min_length[2]|max_length[80]');
+            $this->form_validation->set_rules('apaterno', 'Apellidos', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('empresa', 'Empresa', 'required|trim|min_length[2]|max_length[80]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
             $this->form_validation->set_rules('telefono', 'Teléfono', 'required|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|trim');
             $this->form_validation->set_rules('perfil', 'Perfil', 'required|min_length[1]|max_length[2]|regex_match[/^[1-3]{1}$/]|trim');            
-            $this->form_validation->set_message('required','El %s es obligatorio');            
-            $this->form_validation->set_message('valid_email','El %s no es válido');
-            $this->form_validation->set_message('max_length', 'El %s no puede tener más de %s carácteres');
-            $this->form_validation->set_message('min_length', 'El %s no puede tener menos de %s carácteres');
-            $this->form_validation->set_message('regex_match','El %s es inválido');
+            $this->form_validation->set_message('required','%s es obligatorio');            
+            $this->form_validation->set_message('valid_email','%s no es válido');
+            $this->form_validation->set_message('max_length', '%s no puede tener más de %s carácteres');
+            $this->form_validation->set_message('min_length', '%s no puede tener menos de %s carácteres');
+            $this->form_validation->set_message('regex_match','%s es inválido');
 			
             if($this->form_validation->run() == FALSE)
             {
-					
-				$this->load->view('register_view');
+            	$id_usuario 		= $this->session->userdata('id_usuario');            	
+				$usuario 			= $this->Login_model->get_user($id_usuario);			
+				$data['usuario'] 	= $usuario;				
+				$this->load->view('editar_view',$data);
 
             }else{
 	        	//si estamos editando
@@ -288,21 +292,26 @@ class Login extends CI_Controller
 		        	$empresa 	= $this->input->post('empresa',TRUE);
 		        	$telefono 	= $this->input->post('telefono',TRUE);
 		        	$email 		= $this->input->post('email',TRUE);
-            		$id = $this->input->post('id');
+            		$id_usuario = $this->session->userdata('id_usuario');
 
-            		$usuario 			= $this->Login_model->get_user($id);			
-					$data['usuario'] 	= $usuario;
 
-            		if($this->Login_model->edit_user($id,$nombre,$apaterno,$empresa,$telefono,$email) == 1){            								            			
-            			redirect(base_url().'Login/index/e/1','refresh');
 
+            		if($this->Login_model->edit_user($id_usuario,$nombre,$apaterno,$empresa,$telefono,$email) == 1){            		
+
+            		 	$this->session->set_userdata('username', $nombre.' '.$apaterno);
+            		 	$this->session->set_userdata('email', $email);								                       			
+            			$this->session->set_flashdata('update_correcto','El usuario fué actualizado correctamente');
+            			$this->editar($id_usuario);
+
+            			//redirect(base_url().'Login/index/e/1','refresh');
             		}else{
-            			
-						redirect(base_url().'Login/index/e/2','refresh');
+						$this->session->set_flashdata('update_incorrecto','Error, el usuario no fué actualizado');
+            			$this->editar($id_usuario);            			
             		}
             		
             	}else{            	            		
-					redirect(base_url().'Login/index/e/2','refresh');
+            		$this->session->set_flashdata('update_incorrecto','Error, el usuario no fué actualizado');
+            		$this->editar($id_usuario);						
             	}	        	
 
             }

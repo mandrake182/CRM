@@ -36,7 +36,7 @@ require('header.php');
 			            <span class="input-group-label  bgBlack"  >
 			               <i class="fi-torso colorBlueDark"></i>
 			            </span>
-			            <input class="input-group-field" type="text" name="apaterno" id="apaterno" value="<?php echo set_value('apaterno'); ?>" placeholder="Apellido paterno*"  />
+			            <input class="input-group-field" type="text" name="apaterno" id="apaterno" value="<?php echo set_value('apaterno'); ?>" placeholder="Apellidos*"  />
 			            <!-- error -->
 			        </div>
 			            <?php echo form_error('apaterno'); ?>

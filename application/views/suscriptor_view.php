@@ -1,18 +1,6 @@
 <?php
 require('header.php');
 ?>
-
-
-
- <body>
-  <div class="user">
-  	<div class="content">
-  		<p class="regular colorWhite">Gersain López</p>
-  		<span >|</span>
-  		<a href="" class="regular">Cerra Sesión</a>
-  	</div>
-  </div>
-
 <div class="app-dashboard shrink-medium">
   <div class="row app-dashboard-top-nav-bar">
    <div class="content">
@@ -46,52 +34,14 @@ require('header.php');
           </button>
         </div>
       </div>
-
-
-      <div class="app-dashboard-sidebar-inner bgGrey">
-        <ul class="menu vertical">
-        	<li>
-             <a href="#" class="is-active">
-                <i class="fi-home colorBlueDark"></i><span class="app-dashboard-sidebar-text">Inicio</span>
-              </a>
-          </li>
-          <li>
-             <a href="#" class="">
-                <i class="fi-page-edit colorBlueDark"></i><span class="app-dashboard-sidebar-text">Editar perfil</span>
-              </a>
-          </li>
-
-          <li>
-          	   <a>
-                 <i class="fi-unlock colorBlueDark"></i><span class="app-dashboard-sidebar-text">Modificar password</span>
-               </a>
-           </li>
-
-          <li>
-          	   <a>
-            	<i class="fi-page colorBlueDark"></i><span class="app-dashboard-sidebar-text">Mis requisiciones</span>
-              </a>
-          </li>
-           <li>
-          	   <a>
-            	<i class="fi-page-add colorBlueDark"></i><span class="app-dashboard-sidebar-text">Nueva requisición</span>
-              </a>
-          </li>
-           <li>
-          	   <a>
-            	<i class="fi-arrow-left colorBlueDark"></i><span class="app-dashboard-sidebar-text">Cerrar sesión</span>
-              </a>
-          </li>
-
-        </ul>
-      </div>
+     <?php require('sidebar_menu.php'); ?>      
     </div>
 
     <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
       <h2 class="font2 colorFont light"><strong class="bold">Bienvenido</strong> al sistema de requisisiones<br> de Dairmex </h2>
-      <p class="regular colorFont">Hola <strong>Gersain López</strong> te damos la bienvenida a nuestro sistema de requisisiones, está herramineta nos brinda un mejor control sobre tus ordenes de compra. <br>
+      <p class="regular colorFont">Hola <strong><?php echo $this->session->userdata('username'); ?></strong> te damos la bienvenida a nuestro sistema de requisisiones, está herramineta nos brinda un mejor control sobre tus ordenes de compra. <br>
          Aquí se podrá revisar el historía de ordenes de comprar generarlas  o darlas de bajo, así como editar tu perfil de usuario. <br><br>
-         <strong>Mejorando la busqueda de las requisisciones, persona o empresa.</strong></p>
+         <strong>Mejorando la búsqueda de las requisiciones, persona o empresa.</strong></p>
      <!--  <ul class="list-group">
 	  <li class="list-group-item active">List Group Item 1 (Active)</li>
 	  <li class="list-group-item">List Group Item 2</li>
@@ -101,10 +51,7 @@ require('header.php');
     </div>
   </div>
 </div>
-
-
-
-
+<!--
  <div class="container_12">
  <div class="grid_12">
  <h1 style="text-align: center">Bienvenido usuario</h1>
@@ -112,7 +59,7 @@ require('header.php');
  <?=anchor(base_url().'Login/password/', 'Modificar password')?>
  <?=anchor(base_url().'Requisicion/', 'Mis requisiciones')?>
  <?=anchor(base_url().'Requisicion/nueva_requisicion/', 'Nueva requisición')?>
- <?=anchor(base_url().'login/logout_ci', 'Cerrar sesión')?>
+ <?=anchor(base_url().'Login/logout_ci', 'Cerrar sesión')?>
  </div>
  <h3>Datos del perfil</h3>
  	<?php 	
@@ -144,7 +91,7 @@ require('header.php');
 	<p>Teléfono: <?php echo ($usuario[0]->telefono !=='') ? $usuario[0]->telefono: ''; ?></p>
 	<br/>
  </div> 
- 
+ -->
 <?php
 require('footer.php');
 ?>
