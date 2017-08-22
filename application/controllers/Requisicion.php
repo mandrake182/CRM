@@ -62,7 +62,8 @@ class Requisicion extends CI_Controller
 
 	    $mail->Body = $html;	    
 	    $mail->AddAddress($destino);
-	    $mail->AddAddress($envia);  
+	    $mail->AddAddress($envia);
+	    $mail->AddAddress('dairmex@dairmex.com');  
 	           
 	     if(!$mail->Send()) {
 	        return FALSE;
@@ -116,7 +117,7 @@ class Requisicion extends CI_Controller
 								$Emailtemplate = $this->load->view('emails/template.php',$data,TRUE);								 
 
 								$de_email 	= $this->session->userdata('email');
-								$para_email = 'backend@codehaus.mx';		
+								$para_email = 'isabel.v@dairmex.com';		
 
 								$enviar_email = $this->enviar_email($de_email,$para_email,$Emailtemplate); 
 								if($enviar_email==TRUE){
