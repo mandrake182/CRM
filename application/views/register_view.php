@@ -18,7 +18,7 @@ require('header.php');
 				}
 			  ?>
 
-			  <form class="form-registration-group regitro" action="<?php echo base_url().'Login/save_user'; ?>" method="post" accept-charset="utf-8">
+			  <form class="form-registration-group registro" action="<?php echo base_url().'Login/save_user'; ?>" method="post" accept-charset="utf-8">
 			     
 			      <!-- ∆ Nombre-->
 			       <div class="input-group">

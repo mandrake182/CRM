@@ -16,8 +16,12 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 72em;
+  width: 100%;
   margin: 0 auto;
+  @media(min-width:72em){
+    width: 72em;
+  }
+
 }
 
 .app-dashboard-top-nav-bar {
@@ -32,6 +36,7 @@
           justify-content: center;
   height: 95px;
   width: 100%;
+  position: relative;
 
 }
 
@@ -178,7 +183,7 @@ box-shadow: inset -5px -2px 5px -5px rgba(0,0,0,0.1);
     display: none;
   }
   .app-dashboard.shrink-medium .app-dashboard-open-sidebar {
-    display: block;
+    display: none;
   }
   .app-dashboard.shrink-medium .app-dashboard-sidebar {
     width: 80px;
@@ -264,26 +269,31 @@ box-shadow: inset -5px -2px 5px -5px rgba(0,0,0,0.1);
 
 .app-dashboard-top-nav-bar{
     background-color: black;
-    background-image: url("../img/bgInterna.jpg");
+    background-image: none;
     background-size: 400px; 
     background-position: right center;
     background-repeat: no-repeat;
-    width: 72em;
+    width: 100%;
     margin: 0 auto;
     border-bottom: 4px solid $blueStrong;
   .content{
     width: 100%;
     >div{
-      width: 50%;
+      width: 60%;
       float: left;
       button{
         float: right;
       }
     }
   }
+    @media(min-width:72em){
+          width: 72em;
+             background-image: url("../img/bgInterna.jpg");
+    }
 }
+
 .user{
-  width: 72em;
+  width: 100%;
   margin: 0 auto;
   background: #333;
   .content{
@@ -312,7 +322,13 @@ box-shadow: inset -5px -2px 5px -5px rgba(0,0,0,0.1);
       }
     }
   }
+  @media(min-width:72em){
+          width: 72em;
+    }
 }
+
+
+
 .app-dashboard-sidebar-inner{
   ul{
     padding: 2em 1em;
@@ -332,23 +348,47 @@ box-shadow: inset -5px -2px 5px -5px rgba(0,0,0,0.1);
     }
   }
 }
+.contenido{
+  padding: 2em;
+}
 .app-dashboard-body-content{
-  padding: 4em;
+  padding: 1em ;
+
   h2{
-    font-size: 1.7em;
+    font-size: 1.2em;
     line-height: 1.2em;
     margin-bottom: 1.2em;
 
   }
+  br{
+    display: none;
+  }
   h3{
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.2em;
     margin-bottom: 0;
   }
 
   p{
     font-size: .9em;
-    width: 80%;
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  @media(min-width: 40em){
+      padding: 4em 2em;
+      h2{
+        font-size: 1.7em;
+      }
+      h3{
+        font-size: 1.2em;
+      }
+      p{
+        width: 80%;
+      }
+  }
+  @media(min-width: 72em){
+      padding: 4em;
   }
 }
 

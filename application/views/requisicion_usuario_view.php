@@ -1,37 +1,17 @@
 <?php
 require('header.php');
 ?>
-	<body>
-		<div class="app-dashboard shrink-medium">
-			  <div class="row app-dashboard-top-nav-bar">
-			   <div class="content">
-				    <div class="">
-				      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-				      <a class="app-dashboard-logo">
-				      	<img src="<?php echo base_url();?>img/logo.png" alt="">
-				      </a>
-				    </div>
-			      </div>
-			  </div>
+	<body>	
 
+	    <div class="app-dashboard shrink-medium">
+        		<!--∆ head -->
+		  <?php require('head.php'); ?>   
 
-			  <div class="app-dashboard-body off-canvas-wrapper">
-			    <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
-			      <div class="app-dashboard-sidebar-title-area">
-			        <div class="app-dashboard-close-sidebar">
-			          <!-- Close button -->
-			          <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
-			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
-			          </button>
-			        </div>
-			        <div class="app-dashboard-open-sidebar">
-			          <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
-			            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
-			          </button>
-			        </div>
-			      </div>
-			     <?php require('sidebar_menu.php'); ?>      
-			    </div>
+		 <!-- ∆∆ Body off canvas -->
+		  <div class="app-dashboard-body off-canvas-wrapper">
+			      
+		      <!-- ∆menus -->	
+		     <?php require('sidebar_menu.php'); ?>   
 
 			<!-- content-->
 			<div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>

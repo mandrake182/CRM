@@ -1,25 +1,18 @@
 <?php
 require('header.php');
 ?>
-<div class="app-dashboard shrink-medium">
-  <div class="row app-dashboard-top-nav-bar">
-   <div class="content">
-	    <div class="">
-	      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-	      <a class="app-dashboard-logo">
-	      	<img src="<?php echo base_url();?>img/logo.png" alt="">
-	      </a>
-	    </div>
+	<body>	
 
-	    <!-- <div class="">
-	      	<button href="#" class="button hollow">CERRAR SESIÓN</button>
-	      	<a href="#" height="30" width="30" alt=""><i class="fa fa-info-circle"></i></a>
-	    </div> -->
-      </div>
-  </div>
+	    <div class="app-dashboard shrink-medium">
+        		<!--∆ head -->
+		  <?php require('head.php'); ?>   
 
+		 <!-- ∆∆ Body off canvas -->
+		  <div class="app-dashboard-body off-canvas-wrapper">
+			      
+		      <!-- ∆menus -->	
+		     <?php require('sidebar_menu.php'); ?>   
 
-  <div class="app-dashboard-body off-canvas-wrapper">
     <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
       <div class="app-dashboard-sidebar-title-area">
         <div class="app-dashboard-close-sidebar">
@@ -37,17 +30,14 @@ require('header.php');
      <?php require('sidebar_menu.php'); ?>      
     </div>
 
-    <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
-      <h2 class="font2 colorFont light"><strong class="bold">Bienvenido</strong> al sistema de requisisiones<br> de Dairmex </h2>
-      <p class="regular colorFont">Hola <strong><?php echo $this->session->userdata('username'); ?></strong> te damos la bienvenida a nuestro sistema de requisisiones, está herramineta nos brinda un mejor control sobre tus ordenes de compra. <br>
-         Aquí se podrá revisar el historía de ordenes de comprar generarlas  o darlas de bajo, así como editar tu perfil de usuario. <br><br>
-         <strong>Mejorando la búsqueda de las requisiciones, persona o empresa.</strong></p>
-     <!--  <ul class="list-group">
-	  <li class="list-group-item active">List Group Item 1 (Active)</li>
-	  <li class="list-group-item">List Group Item 2</li>
-	  <li class="list-group-item">List Group Item 3</li>
-	  <li class="list-group-item disabled">List Group Item 4 (Disabled)</li>
-	</ul> -->
+    <div class="app-dashboard-body-content off-canvas-content contenido" data-off-canvas-content>
+    	<div class="contenido">
+	      <h2 class="font2 colorFont light"><strong class="bold">Bienvenido</strong> al sistema de requisisiones<br> de Dairmex </h2>
+	      <p class="regular colorFont">Hola <strong><?php echo $this->session->userdata('username'); ?></strong> te damos la bienvenida a nuestro sistema de requisisiones, está herramineta nos brinda un mejor control sobre tus ordenes de compra. <br>
+	         Aquí se podrá revisar el historía de ordenes de comprar generarlas  o darlas de bajo, así como editar tu perfil de usuario. <br><br>
+	         <strong>Mejorando la búsqueda de las requisiciones, persona o empresa.</strong></p>
+	    </div>
+
     </div>
   </div>
 </div>

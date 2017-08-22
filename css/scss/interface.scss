@@ -3,6 +3,59 @@ body{
   font-family: 'Roboto', sans-serif;
    
 }
+.form-registration{
+.warning{
+  color: $blueStrong;
+  font-size: .9em;
+ padding: .7em;
+    text-align: center;
+    line-height: 1.2em;
+}
+}
+.warning2{
+  p{color: $blueStrong}
+}
+
+.menu-icon{
+position: absolute;
+right: 38px;
+    top: 37px;
+  &:after{
+    background: $blueStrong;
+box-shadow: 0 7px 0 $blueStrong, 0 14px 0 $blueStrong;
+  }
+}
+.back{
+
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    padding: 0.65em 1em;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0096b9;
+    color: #fefefe;
+    display: block;
+    width: 140px;
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 5000px;
+    &:hover{
+      color: white;
+      background: $blueDark;
+    }
+  i{
+    color: white;
+    margin-right: .5em;
+  }
+}
 .colorGrey{
   color: grey;
 }
