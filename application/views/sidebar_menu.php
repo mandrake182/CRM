@@ -19,7 +19,7 @@
 
     <li>
 
-    	  <a href="<?php echo base_url().'Requisicion/index'; ?>" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'Requisicion/index') || strpos($_SERVER['REQUEST_URI'], 'Requisicion/Requisicion/detalles')) ? 'is-active':''; ?>"> 
+    	  <a href="<?php echo base_url().'Requisicion/index'; ?>" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'Requisicion/index') || strpos($_SERVER['REQUEST_URI'], 'Requisicion/detalles')) ? 'is-active':''; ?>"> 
 
       	<i class="fi-page colorBlueDark"></i><span class="app-dashboard-sidebar-text">Mis requisiciones</span>
         </a>
