@@ -18,6 +18,7 @@ class Requisicion extends CI_Controller
 		$id_user = $this->session->userdata('id_usuario');
 		if(!empty($id_user) && $id_user!==''){			
 			$registros_usuario = $this->Requisicion_model->requisicion_usuario($id_user);
+			$data['seccion'] = 1;
 			$data['registros_usuario'] = $registros_usuario;
 			$this->load->view('requisicion_usuario_view',$data);
 		}else{
@@ -108,49 +109,11 @@ class Requisicion extends CI_Controller
 								ini_alter('date.timezone','America/Mexico_City');
 								$fecha			= date('Y-m-d');
 
-								$Emailtemplate ="<!DOCTYPE html>
-													<html>
-													<head>
-														<title>Requisición dairmex</title>
-													</head>
-													<body>
-														<table>
-															<tbody>
-																<tr>
-																	<td>Folio: </td><td>".$folio."</td>
-																	<td>Fecha: </td><td>".$fecha."</td>
-																</tr>
-															</tbody>
-														</table>
-														<table>
-															<thead>
-														      <tr>
-														        <th>No</th>
-														        <th>Artículo</th>
-														        <th>Medida</th>
-														        <th>Cantidad</th>
-														        <th>Proyecto</th>
-														        <th>Comentarios</th>	        
-														      </tr>
-														    </thead>
-														    <tbody>";
-														    $a =1;
-														    foreach ($elementos_ordenados as $re) {
-																$Emailtemplate.="<tr>
-																					<td>".$a."</td>
-																					<td>".$re[0]."</td>
-																					<td>".$re[2]."</td>
-																					<td>".$re[1]."</td>
-																					<td>".$re[3]."</td>
-																					<td>".$re[4]."</td>
-																				 </tr>";
-																$a++;				 		    	
-														    }
+								$data['folio']  			  = $folio;
+								$data['fecha']  			  = $fecha;
+								$data['elementos_ordenados']  = $elementos_ordenados;
 
-									    	$Emailtemplate.="</tbody>
-														</table>
-													</body>
-													</html>";
+								$Emailtemplate = $this->load->view('emails/template.php',$data,TRUE);								 
 
 								$de_email 	= $this->session->userdata('email');
 								$para_email = 'backend@codehaus.mx';		
